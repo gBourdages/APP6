@@ -41,54 +41,60 @@ public class AnalLex {
         while (_positionLecture != _longueur) {
             switch (_aAnaliser.charAt(_positionLecture)) {
                 case '+':
-                  return caseOpperateur('+', positionInit);
+                    return caseOpperateur('+', positionInit);
                 case '-':
-                  return caseOpperateur('-', positionInit);
+                    return caseOpperateur('-', positionInit);
                 case '*':
-                  return caseOpperateur('*', positionInit);
+                    return caseOpperateur('*', positionInit);
                 case '/':
-                  return caseOpperateur('/', positionInit);
+                    return caseOpperateur('/', positionInit);
                 case '=':
-                  return caseOpperateur('=', positionInit);
+                    return caseOpperateur('=', positionInit);
                 default:
-                  return caseNombres(positionInit);
+                    if (caseNombres(positionInit))
+                        return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), false);
             }
         }
-      throw new IllegalArgumentException("Aucun terminal");
+        _positionLecture = _longueur;
+        throw new IllegalArgumentException("Aucun terminal");
     }
 
-  private Terminal caseNombres(int positionInit) {
-    char courant = _aAnaliser.charAt(_positionLecture);
-    if (courant == ('0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')) {
+    private Boolean caseNombres(int positionInit) {
+        char courant = _aAnaliser.charAt(_positionLecture);
+        if (courant == '0' | courant == '1' | courant == '2' | courant == '3' | courant == '4' | courant == '5' | courant == '6' | courant == '7' | courant == '8' | courant == '9') {
+            switch (_etat) {
+                case 0:
+                    _etat = 1;
+                    _positionLecture++;
+                    break;
+                case 1:
+                    if (_positionLecture == _longueur - 1) {
+                        _etat = 0;
+                        _positionLecture++;
+                        return true;
+                    } else {
+                        _positionLecture++;
+                    }
+                    break;
+            }
+        } else {
+            _positionLecture = _longueur;
+            throw new IllegalArgumentException(_aAnaliser.substring(positionInit, _positionLecture));
+        }
+        return false;
+    }
+
+    private Terminal caseOpperateur(char opperateur, int posInit) {
         switch (_etat) {
             case 0:
-                _etat = 1;
                 _positionLecture++;
-                break;
+                return new Terminal(opperateur + "", true);
             case 1:
-                if (_positionLecture++ == _longueur) {
-                    _etat = 0;
-                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture - 1), false);
-                } else
-                    _positionLecture++;
-                break;
+                _etat = 0;
+                return new Terminal(_aAnaliser.substring(posInit, _positionLecture), false);
         }
-    } else
-        throw new IllegalArgumentException(_aAnaliser.substring(positionInit, _positionLecture));
-    return null;
-  }
-
-  private Terminal caseOpperateur(char opperateur, int posInit) {
-    switch (_etat) {
-        case 0:
-            _positionLecture++;
-            return new Terminal(opperateur + "", true);
-        case 1:
-            _etat = 0;
-            return new Terminal(_aAnaliser.substring(posInit, _positionLecture), false);
+        return null;
     }
-    return null;
-  }
 
     //Methode principale a lancer pour tester l'analyseur lexical
     public static void main(String[] args) {
@@ -106,13 +112,12 @@ public class AnalLex {
         // Execution de l'analyseur lexical
         Terminal t = null;
         while (lexical.resteTerminal()) {
-          try {
-            t = lexical.prochainTerminal();
-          } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-          }
-
-            toWrite += t._chaine + "\n";  // toWrite contient le resultat
+            try {
+                t = lexical.prochainTerminal();
+                toWrite += t._chaine + "\n";  // toWrite contient le resultat
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.toString());
+            }
         }                   //    d'analyse lexicale
         System.out.println(toWrite);    // Ecriture de toWrite sur la console
         Writer w = new Writer(args[1], toWrite); // Ecriture de toWrite dans fichier args[1]

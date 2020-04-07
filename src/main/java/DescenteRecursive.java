@@ -1,43 +1,24 @@
-6
-
 /** @author Ahmed Khoumsi */
 
-/** Cette classe effectue l'analyse syntaxique
- */
+/**Cette classe effectue l'analyse syntaxique */
 public class DescenteRecursive {
 
   // Attributs
 
-/** Constructeur de DescenteRecursive :
-      - recoit en argument le nom du fichier contenant l'expression a analyser
-      - pour l'initalisation d'attribut(s)
- */
+/**Constructeur de DescenteRecursive :
+  * - recoit en argument le nom du fichier contenant l'expression a analyser
+  * - pour l'initalisation d'attribut(s) */
 public DescenteRecursive(String in) {
-    //
+
 }
 
-
-/** AnalSynt() effectue l'analyse syntaxique et construit l'AST.
- *    Elle retourne une reference sur la racine de l'AST construit
- */
+/**AnalSynt() effectue l'analyse syntaxique et construit l'AST.
+ * Elle retourne une reference sur la racine de l'AST construit */
 public ElemAST AnalSynt( ) {
    //
 }
 
-
-// Methode pour chaque symbole non-terminal de la grammaire retenue
-// ... 
-// ...
-
-
-
-/** ErreurSynt() envoie un message d'erreur syntaxique
- */
-public void ErreurSynt(String s)
-{
-    //
-}
-
+  /**Methode pour chaque symbole non-terminal de la grammaire retenue */
 
 
   //Methode principale a lancer pour tester l'analyseur syntaxique 
