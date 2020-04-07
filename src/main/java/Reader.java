@@ -14,7 +14,7 @@ public class Reader {
   String _str;
 
   /** Constructeur prenant dans ses param�tre le non du fichier a ouvrir
-   * @param  String qui est le Nom du Fichier
+   * @param  name qui est le Nom du Fichier
    */
 
   public Reader(String name) {

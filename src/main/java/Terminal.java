@@ -1,20 +1,16 @@
 /** @author Ahmed Khoumsi */
 
-/** Cette classe identifie les terminaux reconnus et retournes par
- *  l'analyseur lexical
- */
 public class Terminal {
+  String _chaine;
+  Boolean _opperateur;
+  int _valeur;
 
-
-// Constantes et attributs
-//  ....
-
-
-/** Un ou deux constructeurs (ou plus, si vous voulez)
-  *   pour l'initalisation d'attributs 
- */	
-  public Terminal( ) {   // arguments possibles
-     //
+  public Terminal(String chaine, Boolean opperateur) {   // arguments possibles
+     _chaine = chaine;
+    _opperateur = opperateur;
+    if (!_opperateur)
+      _valeur = Integer.parseInt(_chaine);
+    else
+      _valeur = 0;
   }
-
 }
