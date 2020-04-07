@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ab4b67b-747f-46f5-9fa3-7b864aafdc3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AnalLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnalLex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Reader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Terminal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,12 +63,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586266471850</updated>
-      <workItem from="1586266476087" duration="7966000" />
+      <workItem from="1586266476087" duration="8506000" />
     </task>
+    <task id="LOCAL-00001" summary="Analex">
+      <created>1586274477713</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586274477713</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Analex" />
+    <option name="LAST_COMMIT_MESSAGE" value="Analex" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Project_Structure" timestamp="1586266495856">
@@ -90,6 +99,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586266734172" />
+    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1586274477011">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586274477011" />
     <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1586266930201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -98,10 +111,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586267666063" />
-    <state x="995" y="304" key="extract.method.dialog" timestamp="1586273725754">
+    <state x="995" y="304" key="extract.method.dialog" timestamp="1586274723828">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="995" y="304" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586273725754" />
+    <state x="995" y="304" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586274723828" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1586266831761">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

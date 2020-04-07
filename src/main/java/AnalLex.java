@@ -29,9 +29,8 @@ public class AnalLex {
      * true s'il reste encore au moins un terminal qui n'a pas ete retourne
      */
     public boolean resteTerminal() {
-        //
+        return _longueur != _positionLecture;
     }
-
 
     /**
      * prochainTerminal() retourne le prochain terminal
@@ -42,39 +41,44 @@ public class AnalLex {
         while (_positionLecture != _longueur) {
             switch (_aAnaliser.charAt(_positionLecture)) {
                 case '+':
-                  return opperateurCase('+', positionInit);
+                  return caseOpperateur('+', positionInit);
                 case '-':
-                  return opperateurCase('-', positionInit);
+                  return caseOpperateur('-', positionInit);
                 case '*':
-                  return opperateurCase('*', positionInit);
+                  return caseOpperateur('*', positionInit);
                 case '/':
-                  return opperateurCase('/', positionInit);
+                  return caseOpperateur('/', positionInit);
                 case '=':
-                  return opperateurCase('=', positionInit);
+                  return caseOpperateur('=', positionInit);
                 default:
-                    char courant = _aAnaliser.charAt(_positionLecture);
-                    if (courant == ('0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')) {
-                        switch (_etat) {
-                            case 0:
-                                _etat = 1;
-                                _positionLecture++;
-                                break;
-                            case 1:
-                                if (_positionLecture == _longueur - 1) {
-                                    _etat = 0;
-                                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), false);
-                                } else
-                                    _positionLecture++;
-                                break;
-                        }
-                    } else
-                        throw new IllegalArgumentException(_aAnaliser.substring(positionInit, _positionLecture));
+                  return caseNombres(positionInit);
             }
         }
       throw new IllegalArgumentException("Aucun terminal");
     }
 
-  private Terminal opperateurCase(char opperateur, int posInit) {
+  private Terminal caseNombres(int positionInit) {
+    char courant = _aAnaliser.charAt(_positionLecture);
+    if (courant == ('0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')) {
+        switch (_etat) {
+            case 0:
+                _etat = 1;
+                _positionLecture++;
+                break;
+            case 1:
+                if (_positionLecture++ == _longueur) {
+                    _etat = 0;
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture - 1), false);
+                } else
+                    _positionLecture++;
+                break;
+        }
+    } else
+        throw new IllegalArgumentException(_aAnaliser.substring(positionInit, _positionLecture));
+    return null;
+  }
+
+  private Terminal caseOpperateur(char opperateur, int posInit) {
     switch (_etat) {
         case 0:
             _positionLecture++;
@@ -85,14 +89,6 @@ public class AnalLex {
     }
     return null;
   }
-
-  /**
-     * ErreurLex() envoie un message d'erreur lexicale
-     */
-    public void ErreurLex(String s) {
-        throw new IllegalArgumentException(s);
-    }
-
 
     //Methode principale a lancer pour tester l'analyseur lexical
     public static void main(String[] args) {
