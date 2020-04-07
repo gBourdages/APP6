@@ -16,8 +16,12 @@ public class AnalLex {
      */
     public AnalLex(String aAnaliser) {  // arguments possibles
         _aAnaliser = aAnaliser;
-        _aAnaliser = _aAnaliser.replace(" ", "");
-        _longueur = _aAnaliser.length();
+        if(aAnaliser != null) {
+            _aAnaliser = _aAnaliser.replace(" ", "");
+            _longueur = _aAnaliser.length();
+        }
+        else
+            _aAnaliser = "";
         _etat = 0;
         _positionLecture = 0;
     }
@@ -30,6 +34,10 @@ public class AnalLex {
      */
     public boolean resteTerminal() {
         return _longueur != _positionLecture;
+    }
+
+    public char dernierChar() {
+        return _aAnaliser.charAt(_longueur - 1);
     }
 
     /**
@@ -65,15 +73,13 @@ public class AnalLex {
             switch (_etat) {
                 case 0:
                     _etat = 1;
-                    _positionLecture++;
+                    if(++_positionLecture == _longueur)
+                        return true;
                     break;
                 case 1:
-                    if (_positionLecture == _longueur - 1) {
+                    if (++_positionLecture == _longueur) {
                         _etat = 0;
-                        _positionLecture++;
                         return true;
-                    } else {
-                        _positionLecture++;
                     }
                     break;
             }
@@ -116,7 +122,8 @@ public class AnalLex {
                 t = lexical.prochainTerminal();
                 toWrite += t._chaine + "\n";  // toWrite contient le resultat
             } catch (IllegalArgumentException e) {
-                System.out.println(e.toString());
+                e.printStackTrace();
+                System.exit(51);
             }
         }                   //    d'analyse lexicale
         System.out.println(toWrite);    // Ecriture de toWrite sur la console
