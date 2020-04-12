@@ -1,0 +1,2 @@
+Lecture de l'AST trouve : (U_x-20)
+Evaluation de l'AST trouve : -20
