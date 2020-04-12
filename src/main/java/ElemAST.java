@@ -1,13 +1,16 @@
 /** @author Ahmed Khoumsi */
 
+import java.io.IOException;
+
 /** Classe Abstraite dont heriteront les classes FeuilleAST et NoeudAST
  */
 public abstract class ElemAST {
 
-  
+  Terminal _terminal;
+  public int _nombreDePasse;
   /** Evaluation d'AST
    */
-  public abstract int EvalAST();
+  public abstract int EvalAST() throws IOException;
 
 
   /** Lecture d'AST

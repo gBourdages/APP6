@@ -2,12 +2,13 @@
  * @author Ahmed Khoumsi
  */
 
+import java.io.IOException;
+
 /**
  * Classe representant une feuille d'AST
  */
 public class NoeudAST extends ElemAST {
 
-    Terminal _terminal;
     ElemAST _enfantG;
     ElemAST _enfantD;
 
@@ -18,12 +19,13 @@ public class NoeudAST extends ElemAST {
         _terminal = terminal;
         _enfantG = enfantG;
         _enfantD = enfantD;
+        _nombreDePasse = 0;
     }
 
     /**
      * Evaluation de noeud d'AST
      */
-    public int EvalAST() {
+    public int EvalAST() throws IOException {
         switch (_terminal._chaine) {
             case "+":
                 return _enfantG.EvalAST() + _enfantD.EvalAST();

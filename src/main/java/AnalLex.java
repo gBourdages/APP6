@@ -16,11 +16,10 @@ public class AnalLex {
      */
     public AnalLex(String aAnaliser) {  // arguments possibles
         _aAnaliser = aAnaliser;
-        if(aAnaliser != null) {
+        if (aAnaliser != null) {
             _aAnaliser = _aAnaliser.replace(" ", "");
             _longueur = _aAnaliser.length();
-        }
-        else
+        } else
             _aAnaliser = "";
         _etat = 0;
         _positionLecture = 0;
@@ -47,7 +46,12 @@ public class AnalLex {
     public Terminal prochainTerminal() {
         int positionInit = _positionLecture;
         while (_positionLecture != _longueur) {
-            switch (_aAnaliser.charAt(_positionLecture)) {
+            char caractere = _aAnaliser.charAt(_positionLecture);
+            switch (caractere) {
+                case '(':
+                    return caseOpperateur('(', positionInit);
+                case ')':
+                    return caseOpperateur(')', positionInit);
                 case '+':
                     return caseOpperateur('+', positionInit);
                 case '-':
@@ -56,48 +60,132 @@ public class AnalLex {
                     return caseOpperateur('*', positionInit);
                 case '/':
                     return caseOpperateur('/', positionInit);
-                case '=':
-                    return caseOpperateur('=', positionInit);
+                case '_':
+                    caseSoulignement(positionInit);
+                    break;
                 default:
-                    if (caseNombres(positionInit))
-                        return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), false);
+                    if (Character.isDigit(caractere)) {
+                        Terminal t = caseNombres(positionInit);
+                        if (t != null)
+                            return t;
+                    }
+                    else if (Character.isUpperCase(caractere)) {
+                        Terminal t = caseMajuscule(positionInit);
+                        if (t != null)
+                            return t;
+                    }
+                    else if (Character.isLowerCase(caractere)) {
+                        Terminal t = caseMinuscule(positionInit);
+                        if (t != null)
+                            return t;
+                    }
+                    else {
+                        throwError(_aAnaliser.substring(positionInit, _positionLecture));
+                    }
             }
         }
         _positionLecture = _longueur;
         throw new IllegalArgumentException("Aucun terminal");
     }
 
-    private Boolean caseNombres(int positionInit) {
-        char courant = _aAnaliser.charAt(_positionLecture);
-        if (courant == '0' | courant == '1' | courant == '2' | courant == '3' | courant == '4' | courant == '5' | courant == '6' | courant == '7' | courant == '8' | courant == '9') {
-            switch (_etat) {
-                case 0:
-                    _etat = 1;
-                    if(++_positionLecture == _longueur)
-                        return true;
-                    break;
-                case 1:
-                    if (++_positionLecture == _longueur) {
-                        _etat = 0;
-                        return true;
-                    }
-                    break;
-            }
-        } else {
-            _positionLecture = _longueur;
-            throw new IllegalArgumentException(_aAnaliser.substring(positionInit, _positionLecture));
-        }
-        return false;
+    private void throwError(String message) {
+        _positionLecture = _longueur;
+        throw new IllegalArgumentException(message);
     }
 
-    private Terminal caseOpperateur(char opperateur, int posInit) {
+    private Terminal caseMinuscule(int positionInit) {
+        switch (_etat) {
+            case 2:
+                if (++_positionLecture == _longueur) {
+                    _etat = 0;
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                }
+                break;
+            case 3:
+                _etat = 2;
+                if (++_positionLecture == _longueur) {
+                    _etat = 0;
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                }
+                break;
+            default:
+                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
+        }
+        return null;
+    }
+
+    private Terminal caseMajuscule(int positionInit) {
+        switch (_etat) {
+            case 0:
+                _etat = 2;
+                if (++_positionLecture == _longueur)
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                break;
+            case 2:
+                if (++_positionLecture == _longueur) {
+                    _etat = 0;
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                }
+                break;
+            case 3:
+                _etat = 2;
+                if (++_positionLecture == _longueur) {
+                    _etat = 0;
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                }
+                break;
+            default:
+                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
+        }
+        return null;
+    }
+
+    private Terminal caseNombres(int positionInit) {
+        switch (_etat) {
+            case 0:
+                _etat = 1;
+                if (++_positionLecture == _longueur)
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.NOMBRE);
+                break;
+            case 1:
+                if (++_positionLecture == _longueur) {
+                    _etat = 0;
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.NOMBRE);
+                }
+                break;
+            default:
+                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
+        }
+        return null;
+    }
+
+    private void caseSoulignement(int positionInit) {
+        switch (_etat) {
+            case 2:
+                _etat = 3;
+                if (++_positionLecture == _longueur) {
+                    _etat = 0;
+                    throwError(_aAnaliser.substring(positionInit, _positionLecture));
+                }
+                break;
+            default:
+                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
+        }
+    }
+
+    private Terminal caseOpperateur(char opperateur, int positionInit) {
         switch (_etat) {
             case 0:
                 _positionLecture++;
-                return new Terminal(opperateur + "", true);
+                return new Terminal(opperateur + "", Terminal.OPPERATEUR);
             case 1:
                 _etat = 0;
-                return new Terminal(_aAnaliser.substring(posInit, _positionLecture), false);
+                return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.NOMBRE);
+            case 2:
+                _etat = 0;
+                return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+            case 3:
+                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
         }
         return null;
     }

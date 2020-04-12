@@ -2,13 +2,17 @@
 
 public class Terminal {
   String _chaine;
-  Boolean _opperateur;
+  int _type;
   int _valeur;
 
-  public Terminal(String chaine, Boolean opperateur) {   // arguments possibles
+  public static final int OPPERATEUR = 0;
+  public static final int NOMBRE = 1;
+  public static final int IDENTIFICATEUR = 2;
+
+  public Terminal(String chaine, int type) {   // arguments possibles
      _chaine = chaine;
-    _opperateur = opperateur;
-    if (!_opperateur)
+    _type = type;
+    if (_type == NOMBRE)
       _valeur = Integer.parseInt(_chaine);
     else
       _valeur = 0;
