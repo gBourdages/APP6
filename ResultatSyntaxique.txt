@@ -1,2 +1,2 @@
-Lecture de l'AST trouve : (U_x-20)
-Evaluation de l'AST trouve : -20
+Lecture de l'AST trouve : (5+(12*3))
+Evaluation de l'AST trouve : 41
