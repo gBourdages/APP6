@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9ab4b67b-747f-46f5-9fa3-7b864aafdc3b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExpArith.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ExpArith.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ResultatLexical.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ResultatLexical.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AnalLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnalLex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DescenteRecursive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DescenteRecursive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ElemAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ElemAST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FeuilleAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FeuilleAST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NoeudAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NoeudAST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Terminal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +11,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="WARN_ABOUT_CRLF" value="false" />
   </component>
   <component name="MavenImportPreferences">
@@ -45,7 +38,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -85,7 +78,8 @@
       <workItem from="1586266476087" duration="25427000" />
       <workItem from="1586364303412" duration="216000" />
       <workItem from="1586619599821" duration="9772000" />
-      <workItem from="1586707300302" duration="10535000" />
+      <workItem from="1586707300302" duration="11401000" />
+      <workItem from="1586874395777" duration="278000" />
     </task>
     <task id="LOCAL-00001" summary="Analex">
       <created>1586274477713</created>
@@ -115,7 +109,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586294023802</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fin de l'app">
+      <created>1586719191951</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586719191951</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Ajout du fichier text">
+      <created>1586719229946</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586719229946</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +134,9 @@
     <MESSAGE value="Refactor analex" />
     <MESSAGE value="Implémentation des éléments de l'arbre ast" />
     <MESSAGE value="Fin du lab 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fin du lab 1" />
+    <MESSAGE value="Fin de l'app" />
+    <MESSAGE value="Ajout du fichier text" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout du fichier text" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Project_Structure" timestamp="1586275367549">
@@ -149,42 +159,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586266734172" />
-    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1586719191087">
+    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1586719229320">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586719191087" />
-    <state width="1877" height="208" key="GridCell.Tab.0.bottom" timestamp="1586719196997">
+    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586719229320" />
+    <state width="1877" height="241" key="GridCell.Tab.0.bottom" timestamp="1586729983149">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586719196997" />
-    <state width="1877" height="208" key="GridCell.Tab.0.center" timestamp="1586719196997">
+    <state width="1877" height="241" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983149" />
+    <state width="1877" height="241" key="GridCell.Tab.0.center" timestamp="1586729983148">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586719196997" />
-    <state width="1877" height="208" key="GridCell.Tab.0.left" timestamp="1586719196997">
+    <state width="1877" height="241" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983148" />
+    <state width="1877" height="241" key="GridCell.Tab.0.left" timestamp="1586729983148">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586719196997" />
-    <state width="1877" height="208" key="GridCell.Tab.0.right" timestamp="1586719196997">
+    <state width="1877" height="241" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983148" />
+    <state width="1877" height="241" key="GridCell.Tab.0.right" timestamp="1586729983149">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="208" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586719196997" />
-    <state width="1877" height="241" key="GridCell.Tab.1.bottom" timestamp="1586714096132">
+    <state width="1877" height="241" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983149" />
+    <state width="1877" height="241" key="GridCell.Tab.1.bottom" timestamp="1586729983153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586714096132" />
-    <state width="1877" height="241" key="GridCell.Tab.1.center" timestamp="1586714096132">
+    <state width="1877" height="241" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983153" />
+    <state width="1877" height="241" key="GridCell.Tab.1.center" timestamp="1586729983151">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586714096132" />
-    <state width="1877" height="241" key="GridCell.Tab.1.left" timestamp="1586714096132">
+    <state width="1877" height="241" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983151" />
+    <state width="1877" height="241" key="GridCell.Tab.1.left" timestamp="1586729983150">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586714096132" />
-    <state width="1877" height="241" key="GridCell.Tab.1.right" timestamp="1586714096132">
+    <state width="1877" height="241" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983150" />
+    <state width="1877" height="241" key="GridCell.Tab.1.right" timestamp="1586729983152">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586714096132" />
+    <state width="1877" height="241" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983152" />
     <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1586266930201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -193,10 +203,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="775" y="454" key="ReplaceDuplicatesPrompt/0.0.1920.1040@0.0.1920.1040" timestamp="1586627994368" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1586276164489">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1586874496774">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586276164489" />
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586874496774" />
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586874834289">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586874834289" />
     <state x="995" y="304" width="540" height="468" key="extract.method.dialog" timestamp="1586718510206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
