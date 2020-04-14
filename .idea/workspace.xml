@@ -5,12 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExpArith.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ExpArith.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ResultatLexical.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ResultatLexical.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ResultatSyntaxique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ResultatSyntaxique.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AnalLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnalLex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DescenteRecursive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DescenteRecursive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ElemAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ElemAST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FeuilleAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FeuilleAST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NoeudAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NoeudAST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Terminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AnalLex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AnalLex.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +42,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -86,6 +83,9 @@
       <workItem from="1586364303412" duration="216000" />
       <workItem from="1586619599821" duration="9772000" />
       <workItem from="1586707300302" duration="10535000" />
+      <workItem from="1586739875466" duration="1462000" />
+      <workItem from="1586786126455" duration="1008000" />
+      <workItem from="1586872504359" duration="1055000" />
     </task>
     <task id="LOCAL-00001" summary="Analex">
       <created>1586274477713</created>
@@ -149,26 +149,35 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586266734172" />
-    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1586719191087">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1586874635824">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586719191087" />
-    <state width="1877" height="208" key="GridCell.Tab.0.bottom" timestamp="1586719196997">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1586874635824" />
+    <state x="719" y="197" key="FileChooserDialogImpl" timestamp="1586874522641">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="719" y="197" key="FileChooserDialogImpl/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1586874522641" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1586874458569">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586719196997" />
-    <state width="1877" height="208" key="GridCell.Tab.0.center" timestamp="1586719196997">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1586874458569" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1586874458569">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="208" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586719196997" />
-    <state width="1877" height="208" key="GridCell.Tab.0.left" timestamp="1586719196997">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1586874458569" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1586874458569">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="208" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586719196997" />
-    <state width="1877" height="208" key="GridCell.Tab.0.right" timestamp="1586719196997">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1586874458569" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1586874458569">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="208" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586719196997" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1586874458569" />
     <state width="1877" height="241" key="GridCell.Tab.1.bottom" timestamp="1586714096132">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -193,10 +202,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="775" y="454" key="ReplaceDuplicatesPrompt/0.0.1920.1040@0.0.1920.1040" timestamp="1586627994368" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1586276164489">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="440" y="98" key="SettingsEditor" timestamp="1586874533038">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586276164489" />
+    <state x="440" y="98" key="SettingsEditor/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1586874533038" />
+    <state x="656" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1586872504203">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="656" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1586872504203" />
     <state x="995" y="304" width="540" height="468" key="extract.method.dialog" timestamp="1586718510206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -209,16 +223,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="173" width="672" height="676" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586629624530" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/DescenteRecursive.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -208,6 +208,12 @@ public class AnalLex {
         while (lexical.resteTerminal()) {
             try {
                 t = lexical.prochainTerminal();
+                if (t._type == Terminal.OPPERATEUR)
+                    toWrite += "Operateur : ";
+                else if (t._type == Terminal.NOMBRE)
+                    toWrite += "Nombre : ";
+                else if (t._type == Terminal.IDENTIFICATEUR)
+                    toWrite += "Identificateur : ";
                 toWrite += t._chaine + "\n";  // toWrite contient le resultat
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
