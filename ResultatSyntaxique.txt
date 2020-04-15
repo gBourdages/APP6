@@ -1,2 +1,2 @@
-Lecture de l'AST trouve : (5+(12*3))
-Evaluation de l'AST trouve : 41
+Lecture de l'AST trouve : (A+((B*(10/2))-4))
+Evaluation de l'AST trouve : 56

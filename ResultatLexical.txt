@@ -1,3 +1,0 @@
-Nombre : 7
-Operateur : *
-Nombre : 5

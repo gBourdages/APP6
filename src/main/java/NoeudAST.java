@@ -4,17 +4,14 @@
 
 import java.io.IOException;
 
-/**
- * Classe representant une feuille d'AST
- */
+/**Classe representant un noeud d'AST*/
 public class NoeudAST extends ElemAST {
-
+    /**Enfant de gauche du noeud*/
     ElemAST _enfantG;
+    /**Enfant de droite du noeud*/
     ElemAST _enfantD;
 
-    /**
-     * Constructeur pour l'initialisation d'attributs
-     */
+    /**Constructeur pour l'initialisation d'attributs*/
     public NoeudAST(Terminal terminal, ElemAST enfantG, ElemAST enfantD) {
         _terminal = terminal;
         _enfantG = enfantG;
@@ -22,9 +19,7 @@ public class NoeudAST extends ElemAST {
         _nombreDePasse = 0;
     }
 
-    /**
-     * Evaluation de noeud d'AST
-     */
+    /**Evaluation du noeud d'AST*/
     public int EvalAST() throws IOException {
         switch (_terminal._chaine) {
             case "+":
@@ -40,11 +35,10 @@ public class NoeudAST extends ElemAST {
         }
     }
 
-    /** Lecture de noeud d'AST
-     */
-  public String LectAST( ) {
-    return "(" + _enfantG.LectAST() + _terminal._chaine + _enfantD.LectAST() + ")";
-  }
+    /**Lecture de noeud d'AST*/
+    public String LectAST() {
+        return "(" + _enfantG.LectAST() + _terminal._chaine + _enfantD.LectAST() + ")";
+    }
 }
 
 

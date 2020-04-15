@@ -2,19 +2,19 @@
  * @author Ahmed Khoumsi
  */
 
-/**
- * Cette classe effectue l'analyse lexicale
- */
+/**Cette classe effectue l'analyse lexicale*/
 public class AnalLex {
+    /**Chaine à analiser*/
     String _aAnaliser;
+    /**Longueur de la chaine à analiser*/
     int _longueur;
+    /**État de l'AEF*/
     int _etat;
+    /**caractère en cours de lecture*/
     int _positionLecture;
 
-    /**
-     * Constructeur pour l'initialisation d'attribut(s)
-     */
-    public AnalLex(String aAnaliser) {  // arguments possibles
+    /**Constructeur pour l'initialisation d'attribut(s) */
+    public AnalLex(String aAnaliser) {
         _aAnaliser = aAnaliser;
         if (aAnaliser != null) {
             _aAnaliser = _aAnaliser.replace(" ", "");
@@ -25,24 +25,36 @@ public class AnalLex {
         _positionLecture = 0;
     }
 
-
-    /**
-     * resteTerminal() retourne :
-     * false  si tous les terminaux de l'expression arithmetique ont ete retournes
-     * true s'il reste encore au moins un terminal qui n'a pas ete retourne
-     */
+    /**Vérifie si il reste des caractère à analiser*/
     public boolean resteTerminal() {
         return _longueur != _positionLecture;
     }
 
-    public char dernierChar() {
-        return _aAnaliser.charAt(_longueur - 1);
+    /**Retourne une sous chaine jusqu'à la position de lecture
+     * pour la génération d'erreur*/
+    public String stringErreur() {
+        return _aAnaliser.substring(0, _positionLecture);
     }
 
-    /**
-     * prochainTerminal() retourne le prochain terminal
-     * Cette methode est une implementation d'un AEF
-     */
+    /**Retourne une chaine avec une flèche pointant la position de lecture
+     * pour la génération d'erreur*/
+    public String stringFleche() {
+        String toReturn = "\n";
+        for (int i = 0; i < _positionLecture - 1; ++i) {
+            toReturn += " ";
+        }
+        toReturn += "^";
+        return toReturn;
+    }
+
+    /**Génération d'exceptions (erreurs)*/
+    private void throwError(String message) {
+        _positionLecture = _longueur;
+        throw new IllegalArgumentException(message);
+    }
+
+    /**prochainTerminal() retourne le prochain terminal
+     * Cette methode est une implementation d'un AEF */
     public Terminal prochainTerminal() {
         int positionInit = _positionLecture;
         while (_positionLecture != _longueur) {
@@ -61,11 +73,11 @@ public class AnalLex {
                 case '/':
                     return caseOpperateur('/', positionInit);
                 case '_':
-                    caseSoulignement(positionInit);
+                    caseSoulignement();
                     break;
                 default:
                     if (Character.isDigit(caractere)) {
-                        Terminal t = caseNombres(positionInit);
+                        Terminal t = caseChiffre(positionInit);
                         if (t != null)
                             return t;
                     }
@@ -80,112 +92,152 @@ public class AnalLex {
                             return t;
                     }
                     else {
-                        throwError(_aAnaliser.substring(positionInit, _positionLecture));
+                        _positionLecture++;
+                        throwError("\nCharactere invalide : \n" + stringErreur() + stringFleche());
                     }
             }
         }
         _positionLecture = _longueur;
-        throw new IllegalArgumentException("Aucun terminal");
+        throw new IllegalArgumentException("Aucun Charactere");
     }
 
-    private void throwError(String message) {
-        _positionLecture = _longueur;
-        throw new IllegalArgumentException(message);
-    }
-
+    /**Cas ou une lettre minuscule est lu*/
     private Terminal caseMinuscule(int positionInit) {
         switch (_etat) {
+            case 0:
+                _positionLecture++;
+                throwError("\nIdentificateur ne peuvent commencer \npar une minuscule : \n"
+                        + stringErreur() + stringFleche());
+            case 1:
+                _positionLecture++;
+                throwError("\nChiffre ou opperateur attendu : \n"
+                        + stringErreur() + stringFleche());
+                break;
             case 2:
                 if (++_positionLecture == _longueur) {
                     _etat = 0;
-                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                            Terminal.IDENTIFICATEUR);
                 }
                 break;
             case 3:
                 _etat = 2;
                 if (++_positionLecture == _longueur) {
                     _etat = 0;
-                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                            Terminal.IDENTIFICATEUR);
                 }
                 break;
-            default:
-                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
         }
         return null;
     }
 
+    /**Cas ou une lettre majuscule est lu*/
     private Terminal caseMajuscule(int positionInit) {
         switch (_etat) {
             case 0:
                 _etat = 2;
                 if (++_positionLecture == _longueur)
-                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                            Terminal.IDENTIFICATEUR);
                 break;
+            case 1:
+                _positionLecture++;
+                throwError("\nChiffre ou opperateur attendu : \n"
+                        + stringErreur() + stringFleche());
             case 2:
                 if (++_positionLecture == _longueur) {
                     _etat = 0;
-                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                            Terminal.IDENTIFICATEUR);
                 }
                 break;
             case 3:
                 _etat = 2;
                 if (++_positionLecture == _longueur) {
                     _etat = 0;
-                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                            Terminal.IDENTIFICATEUR);
                 }
                 break;
-            default:
-                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
         }
         return null;
     }
 
-    private Terminal caseNombres(int positionInit) {
+    /**Cas ou un chiffre est lu*/
+    private Terminal caseChiffre(int positionInit) {
         switch (_etat) {
             case 0:
                 _etat = 1;
                 if (++_positionLecture == _longueur)
-                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.NOMBRE);
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                            Terminal.NOMBRE);
                 break;
             case 1:
                 if (++_positionLecture == _longueur) {
                     _etat = 0;
-                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.NOMBRE);
+                    return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                            Terminal.NOMBRE);
                 }
                 break;
-            default:
-                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
+            case 2:
+                _positionLecture++;
+                throwError("\nIdentificateurs ne peuvent contenir \ndes chiffres : \n"
+                        + stringErreur() + stringFleche());
+            case 3:
+                _positionLecture++;
+                throwError("\nIdentificateurs ne peuvent contenir \ndes chiffres : \n"
+                        + stringErreur() + stringFleche());
         }
         return null;
     }
 
-    private void caseSoulignement(int positionInit) {
+    /**Cas ou une barre de soulignement est lu*/
+    private void caseSoulignement() {
         switch (_etat) {
+            case 0:
+                _positionLecture++;
+                throwError("\nIdentificateurs ne peuvent commencer \npar une barre de soulignement : \n"
+                        + stringErreur() + stringFleche());
+            case 1:
+                _positionLecture++;
+                throwError("\nChiffre ou opperateur attendu : \n"
+                        + stringErreur() + stringFleche());
             case 2:
                 _etat = 3;
                 if (++_positionLecture == _longueur) {
                     _etat = 0;
-                    throwError(_aAnaliser.substring(positionInit, _positionLecture));
+                    throwError("\nIdentificateurs ne peuvent se terminer \npar une barre de soulignement : \n"
+                            + stringErreur() + stringFleche());
                 }
                 break;
-            default:
-                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
+            case 3:
+                _positionLecture++;
+                throwError("\nIdentificateur ne peuvent contenir 2 \nbarres de soulignement d'affile : \n"
+                        + stringErreur() + stringFleche());
         }
     }
 
+    /**Cas ou un oppérateur est lu*/
     private Terminal caseOpperateur(char opperateur, int positionInit) {
         switch (_etat) {
             case 0:
                 _positionLecture++;
-                return new Terminal(opperateur + "", Terminal.OPPERATEUR);
+                int typeTerminal = Terminal.OPPERATEUR;
+                if(opperateur == '(' | opperateur == ')')
+                    typeTerminal = Terminal.PARENTHESE;
+                return new Terminal(opperateur + "", typeTerminal);
             case 1:
                 _etat = 0;
-                return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.NOMBRE);
+                return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                        Terminal.NOMBRE);
             case 2:
                 _etat = 0;
-                return new Terminal(_aAnaliser.substring(positionInit, _positionLecture), Terminal.IDENTIFICATEUR);
+                return new Terminal(_aAnaliser.substring(positionInit, _positionLecture),
+                        Terminal.IDENTIFICATEUR);
             case 3:
-                throwError(_aAnaliser.substring(positionInit, ++_positionLecture));
+                throwError("\nIdendificateurs ne peuvent se terminer par une barre de soulignement : \n"
+                        + _aAnaliser.substring(0, ++_positionLecture));
         }
         return null;
     }
@@ -214,6 +266,8 @@ public class AnalLex {
                     toWrite += "Nombre : ";
                 else if (t._type == Terminal.IDENTIFICATEUR)
                     toWrite += "Identificateur : ";
+                else if (t._type == Terminal.PARENTHESE)
+                    toWrite += "Parenthese : ";
                 toWrite += t._chaine + "\n";  // toWrite contient le resultat
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();

@@ -6,39 +6,47 @@
  * Cette classe effectue l'analyse syntaxique
  */
 public class DescenteRecursive {
-    AnalLex _lexical;
+    /**Instance de l'analiseur lexical*/
+    private AnalLex _lexical;
+    /**Symbole terminal en cours d'analyse*/
     private Terminal _terminal;
-    private Terminal _terminalPrecedent;
+    /**Tableau ou les terminaux sont sauvegardé*/
+    private Terminal[] _terminaux;
+    /**Index du tableau précédent*/
+    private int _terminalIndex;
 
-    /**
-     * Constructeur de DescenteRecursive :
-     * - recoit en argument le nom du fichier contenant l'expression a analyser
-     * - pour l'initalisation d'attribut(s)
-     */
+    /**Constructeur :
+     * -    Lecture du fichier texte
+     * -    initialisation des attributs*/
     public DescenteRecursive(String in) {
         Reader r = new Reader(in);
         _lexical = new AnalLex(r.toString());
+        _terminalIndex = 0;
+        _terminaux = new Terminal[256];
     }
 
-    /**
-     * AnalSynt() effectue l'analyse syntaxique et construit l'AST.
-     * Elle retourne une reference sur la racine de l'AST construit
-     */
+    /**Lecture du prochain terminal
+     * et sauvegarde de celui-ci dans le tableau _terminaux */
+    private Terminal prochainTerminal() {
+        _terminaux[_terminalIndex] = _lexical.prochainTerminal();
+        return _terminaux[_terminalIndex++];
+    }
+
+    /**Démarage de l'analyse syntaxique
+     * retournant le noeud racine de l'arbre AST généré */
     public ElemAST AnalSynt() {
         if (_lexical.resteTerminal()) {
             return E();
         } else
             throw new IllegalArgumentException("Ligne vide");
-
     }
 
-    /**
-     * Methode pour chaque symbole non-terminal de la grammaire retenue
-     */
+    /**Symbole E de la grammaire,
+     * représente la règle E -> T [ + E | - E ]
+     * retournant l'élément AST racine du sous arbre généré*/
     private ElemAST E() {
         ElemAST enfantG = T();
         if (_lexical.resteTerminal()) {
-            //_terminal = _lexical.prochainTerminal();
             if (_terminal._chaine.equals("+") | _terminal._chaine.equals("-"))
                 return new NoeudAST(_terminal, enfantG, E());
             else
@@ -47,43 +55,38 @@ public class DescenteRecursive {
             return enfantG;
     }
 
+    /**Symbole T de la grammaire,
+     * représente la règle T -> U [ * T | / T ]
+     * retournant l'élément AST racine du sous arbre généré*/
     private ElemAST T() {
         ElemAST enfantG = U();
         if (_lexical.resteTerminal()) {
-            _terminal = _lexical.prochainTerminal();
+            _terminal = prochainTerminal();
             if (_terminal._chaine.equals("*") | _terminal._chaine.equals("/"))
                 return new NoeudAST(_terminal, enfantG, T());
             else
                 return enfantG;
         } else
             return enfantG;
-        /*if(_lexical.resteTerminal()) {
-            Terminal terminal = _lexical.prochainTerminal();
-            if (terminal._type != Terminal.OPPERATEUR) {
-                return new FeuilleAST(terminal);
-            } else
-                throw new IllegalArgumentException("Erreur de syntaxe : " + terminal._chaine);
-        }
-        else
-            throw new IllegalArgumentException("Erreur de syntaxe : " + _lexical.dernierChar());*/
     }
 
+    /**Symbole U de la grammaire,
+     * représente la règle U -> a | b | (E)
+     * retournant l'élément AST racine du sous arbre généré*/
     private ElemAST U() {
         ElemAST toReturn;
         if (_lexical.resteTerminal()) {
-            _terminalPrecedent = _terminal;
-            _terminal = _lexical.prochainTerminal();
-            if (_terminalPrecedent != null) {
-                if (_terminal._chaine.equals(")") & _terminalPrecedent._type == Terminal.OPPERATEUR)
-                    throw new IllegalArgumentException("Erreur de syntaxe : " + _terminalPrecedent._chaine +_terminal._chaine);
+            _terminal = prochainTerminal();
+            if (_terminalIndex > 1) {
+                if (_terminal._chaine.equals(")") & _terminaux[_terminalIndex - 2]._type == Terminal.OPPERATEUR)
+                    throw new IllegalArgumentException("\nErreur de syntaxe, opperateur avant \nparenthese fermante :\n"
+                            + _lexical.stringErreur() + _lexical.stringFleche());
             }
             if (_terminal._chaine.equals("(")) {
                 toReturn = E();
-                //if (!_lexical.resteTerminal())
-                //    throw new IllegalArgumentException("Erreur de syntaxe : " + _terminal._chaine);
-                //_terminal = _lexical.prochainTerminal();
                 if (!_terminal._chaine.equals(")"))
-                    throw new IllegalArgumentException("Erreur de syntaxe : " + _terminal._chaine);
+                    throw new IllegalArgumentException("\nErreur de syntaxe, manque la parenthese \nfermante :\n"
+                            + _lexical.stringErreur() + _lexical.stringFleche());
                 else
                     return toReturn;
             } else {
@@ -91,13 +94,15 @@ public class DescenteRecursive {
             }
         }
         else
-            throw new IllegalArgumentException("Erreur de syntaxe : " + _lexical.dernierChar());
+            throw new IllegalArgumentException("\nErreur de syntaxe, expression attendue :\n"
+                    + _lexical.stringErreur() + _lexical.stringFleche());
     }
 
-
+    /**Génération de l'expression post fix sous la forme d'une chaine de caractère,
+     * fait de facon récursive*/
     public String postFix(NoeudAST racine) {
         String toReturn = "";
-        toReturn += checkNoeud(racine);
+        toReturn += verifNoeud(racine);
         if (racine._enfantG != null) {
             if (racine._enfantG._terminal._type == Terminal.OPPERATEUR) {
                 toReturn += postFix((NoeudAST) racine._enfantG) + " ";
@@ -106,7 +111,7 @@ public class DescenteRecursive {
                 toReturn += racine._enfantG._terminal._chaine + " ";
             }
         }
-        toReturn += checkNoeud(racine);
+        toReturn += verifNoeud(racine);
         if (racine._enfantD != null) {
             if (racine._enfantD._terminal._type == Terminal.OPPERATEUR) {
                 toReturn += postFix((NoeudAST) racine._enfantD) + " ";
@@ -115,11 +120,13 @@ public class DescenteRecursive {
                 toReturn += racine._enfantD._terminal._chaine + " ";
             }
         }
-        toReturn += checkNoeud(racine);
+        toReturn += verifNoeud(racine);
         return toReturn;
     }
 
-    private String checkNoeud(NoeudAST racine) {
+    /**Vérification du noeud donné,
+     * utilisé pour la génération de l'expression post fix*/
+    private String verifNoeud(NoeudAST racine) {
         racine._nombreDePasse++;
         if(racine._nombreDePasse == 3) {
             racine._nombreDePasse = 0;
@@ -129,7 +136,6 @@ public class DescenteRecursive {
             return "";
     }
 
-    //Methode principale a lancer pour tester l'analyseur syntaxique
     public static void main(String[] args) {
         String toWriteLect = "";
         String toWriteEval = "";

@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ab4b67b-747f-46f5-9fa3-7b864aafdc3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpArith.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ExpArith.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ResultatLexical.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ResultatLexical.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ResultatSyntaxique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ResultatSyntaxique.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AnalLex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnalLex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DescenteRecursive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DescenteRecursive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ElemAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ElemAST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FeuilleAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FeuilleAST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NoeudAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NoeudAST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Terminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AnalLex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AnalLex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DescenteRecursive.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DescenteRecursive.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ElemAST.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ElemAST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FeuilleAST.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FeuilleAST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NoeudAST.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/NoeudAST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Terminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Terminal.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,38 +178,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586719229320" />
-    <state width="1877" height="241" key="GridCell.Tab.0.bottom" timestamp="1586729983149">
+    <state width="914" height="316" key="GridCell.Tab.0.bottom" timestamp="1586904006733">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983149" />
-    <state width="1877" height="241" key="GridCell.Tab.0.center" timestamp="1586729983148">
+    <state width="914" height="316" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586904006733" />
+    <state width="914" height="316" key="GridCell.Tab.0.center" timestamp="1586904006733">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983148" />
-    <state width="1877" height="241" key="GridCell.Tab.0.left" timestamp="1586729983148">
+    <state width="914" height="316" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586904006733" />
+    <state width="914" height="316" key="GridCell.Tab.0.left" timestamp="1586904006733">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983148" />
-    <state width="1877" height="241" key="GridCell.Tab.0.right" timestamp="1586729983149">
+    <state width="914" height="316" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586904006733" />
+    <state width="914" height="316" key="GridCell.Tab.0.right" timestamp="1586904006733">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983149" />
-    <state width="1877" height="241" key="GridCell.Tab.1.bottom" timestamp="1586729983153">
+    <state width="914" height="316" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586904006733" />
+    <state width="914" height="240" key="GridCell.Tab.1.bottom" timestamp="1586903466187">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983153" />
-    <state width="1877" height="241" key="GridCell.Tab.1.center" timestamp="1586729983151">
+    <state width="914" height="240" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586903466187" />
+    <state width="914" height="240" key="GridCell.Tab.1.center" timestamp="1586903466186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983151" />
-    <state width="1877" height="241" key="GridCell.Tab.1.left" timestamp="1586729983150">
+    <state width="914" height="240" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586903466186" />
+    <state width="914" height="240" key="GridCell.Tab.1.left" timestamp="1586903466186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983150" />
-    <state width="1877" height="241" key="GridCell.Tab.1.right" timestamp="1586729983152">
+    <state width="914" height="240" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586903466186" />
+    <state width="914" height="240" key="GridCell.Tab.1.right" timestamp="1586903466186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="241" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586729983152" />
+    <state width="914" height="240" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586903466186" />
     <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1586266930201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -223,16 +238,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="173" width="672" height="676" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586629624530" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/DescenteRecursive.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

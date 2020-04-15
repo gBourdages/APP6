@@ -8,6 +8,7 @@ public class Terminal {
   public static final int OPPERATEUR = 0;
   public static final int NOMBRE = 1;
   public static final int IDENTIFICATEUR = 2;
+  public static final int PARENTHESE = 3;
 
   public Terminal(String chaine, int type) {   // arguments possibles
      _chaine = chaine;
